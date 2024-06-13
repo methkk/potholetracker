@@ -1,11 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Import the cors middleware
 const app = express();
 const PORT = 3000;
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+app.use(cors({
+  origin: 'https://methkk.github.io', // Allow requests from this origin
+  methods: ['GET', 'POST', 'DELETE'], // Allow specified HTTP methods
+  allowedHeaders: ['Content-Type'], // Allow specified headers
+
+}));
 let pins = [];
 let users = [];
 
